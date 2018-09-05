@@ -1,18 +1,19 @@
 .main
   .contents
     .contents__left
-      = form_for @recipe do |f|
-        .contents__left__recipe.clearfix
-          -# contents__left内の削除、印刷のところ
-          .recipe_author
-            .recipe_author__link_author_kitchen
-              = "#{current_user.name}のレシピ"
-            .recipe_author__link_setting_delete
-            -# recipe内の入力する部分(画像、材料、キャッチコピー)
-          .recipe-main
-            .recipe-title
-              -# %h1 recipe-title
-              = f.text_field :title, required: true
+      -# = form_for @recipe do |f|
+      .contents__left__recipe.clearfix
+        -# contents__left内の削除、印刷のところ
+        .recipe_author
+          .recipe_author__link_author_kitchen
+            = "#{current_user.name}のレシピ"
+          .recipe_author__link_setting_delete
+          -# recipe内の入力する部分(画像、材料、キャッチコピー)
+        .recipe-main
+          .recipe-title
+            %h1#edit-recipe-title
+              = @recipe.title
+              -# = f.text_field :title, required: true
               -# 画像
         -#     .recipe-photo
         -#       = f.label :image do
@@ -101,3 +102,5 @@
     -#         = link_to "アイコンを設定する", "#"
     -#     %span.fukidashi
     -#       = image_tag "fukidashi.png", size: '14x21'
+}
+}
