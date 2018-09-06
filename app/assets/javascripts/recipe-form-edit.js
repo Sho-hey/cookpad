@@ -15,14 +15,16 @@ $(function(){
 
   $(document).on("submit", ".titleform", function(e){
     e.preventDefault();
-    var value = $("#recipe_title").val();
-    // var formData = new FormData(this);
-    var id = $(this).parents(".recipe-title").attr("recipeid");
+    // var value = $("#recipe_title").val();
+    // var fd = new FormData($('.titleform').get(0));
+    // console.log(fd);
+    var formData = new FormData(this);
+    var id = Number($(this).parents(".recipe-title").attr("recipeid"));
     // console.log(value);
     $.ajax({
-      url: "/recipes/" + id + "/edit",
+      url: "/recipes/" + id,
       type: "PATCH",
-      data: value,
+      data: formData,
       dataType: "json",
       processData: false,
       contentType: false
