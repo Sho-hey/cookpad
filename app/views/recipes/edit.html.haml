@@ -10,7 +10,7 @@
           .recipe_author__link_setting_delete
           -# recipe内の入力する部分(画像、材料、キャッチコピー)
         .recipe-main
-          .recipe-title
+          .recipe-title{recipeid: @recipe.id}
             %h1#edit-recipe-title
               = @recipe.title
               -# = f.text_field :title, required: true
