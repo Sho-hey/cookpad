@@ -21,6 +21,7 @@ $(function(){
   $(document).on("click", ".editor_cancel", function(){
     $(".titleform").remove();
     $("#edit-recipe-title").show();
+    return false;
   });
 
 // 保存ボタンを押すと
@@ -49,6 +50,8 @@ $(function(){
     return false;
   });
 
+
+
   // レシピのキャッチコピー
   function recipeCatchCopyForm(recipeCatchCopy){
     var html = `<form class="catch_copy_form">
@@ -74,6 +77,7 @@ $(function(){
   $(document).on("click", ".editor_cancel-catch_copy", function(){
     $(".catch_copy_form").remove();
     $(".catchphrase").show();
+    return false;
   });
 
 // 保存ボタンを押すと
@@ -108,6 +112,8 @@ $(function(){
     return false;
   })
 
+
+
 // レシピのコツ
   function recipeTipsForm(recipeTips){
     var html = `<form class="tips_form">
@@ -129,6 +135,13 @@ $(function(){
     $(".recipe-tips-edit").before(html);
   });
 
+// 取消ボタン
+  $(document).on("click", ".editor_cancel-tips", function(){
+    $(".tips_form").remove();
+    $(".recipe-tips-edit").show();
+    return false;
+  });
+// 保存ボタン
   $(document).on("submit", ".tips_form", function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -156,5 +169,6 @@ $(function(){
     .fail(function(recipe){
       alert('error');
     });
+    return false;
   });
 });
