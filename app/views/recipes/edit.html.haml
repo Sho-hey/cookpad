@@ -1,7 +1,6 @@
 .main
   .contents
     .contents__left
-      -# = form_for @recipe do |f|
       .contents__left__recipe.clearfix
         -# contents__left内の削除、印刷のところ
         .recipe_author
@@ -9,11 +8,19 @@
             = "#{current_user.name}のレシピ"
           .recipe_author__link_setting_delete
           -# recipe内の入力する部分(画像、材料、キャッチコピー)
-        .recipe-main
-          .recipe-title{recipeid: @recipe.id}
+        .recipe-main{recipeid: @recipe.id}
+          .recipe-title
             %h1#edit-recipe-title
               = @recipe.title
-              -# = f.text_field :title, required: true
+          .catchphrase_and_ingredients
+            .catchphrase_recipe_author_top
+              .catchphrase
+                - if @recipe.catch_copy.present?
+                  .recipe-catch_copy-edit
+                    = @recipe.catch_copy
+                - else
+                  = image_tag "edit-image.png", class: "edit-image"
+                  %span.exaple-catch_copy このレシピのキャッチコピーを入力 (検索結果にも表示されます)
               -# 画像
         -#     .recipe-photo
         -#       = f.label :image do
@@ -23,11 +30,7 @@
         -#           = image_tag "image-upload.png", id: "image_example", width: "280px"
         -#         = f.file_field :image, class: 'recipe-image'
         -#     -# キャッチコピーと材料
-        -#     .catchphrase_and_ingredients
-        -#       .catchphrase_recipe_author_top
-        -#         .catchphrase
-        -#           -# = image_tag "edit-image.png", class: "edit-image"
-        -#           -# このレシピのキャッチコピーを入力 (検索結果にも表示されます)
+
         -#           = f.text_area :catch_copy
         -#         .recipe_author_top
         -#           .recipe_author_top__link
