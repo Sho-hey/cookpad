@@ -46,17 +46,19 @@
                 - else
                   = image_tag "edit-image.png", class: "edit-image"
                   %span.example-tips クリックしてコツやポイントを入力
-                  -# = f.text_area :tips, placeholder: "コツ"
             .history_wrapper
               %h3 このレシピの生い立ち
-              .text-content.recipe-history-edit
-                = image_tag "edit-image.png", class: "edit-image"
-                クリックしてこのレシピをが生まれたきっかけや経験を入力
-                %br
-                %span 例）母から教わったレシピを、家族が好む甘めの味付けにアレンジしました
-                %br
-                %span 例）〇〇番組で紹介されたレシピを、家にある材料で簡単に作れるように工夫しました
-                -# = f.text_area :background
+              .text-content.recipe-background-edit
+                - if @recipe.background.present?
+                  .recipe-background-edit-present
+                    = @recipe.background
+                - else
+                  = image_tag "edit-image.png", class: "edit-image"
+                  クリックしてこのレシピをが生まれたきっかけや経験を入力
+                  %br
+                  %span 例）母から教わったレシピを、家族が好む甘めの味付けにアレンジしました
+                  %br
+                  %span 例）〇〇番組で紹介されたレシピを、家にある材料で簡単に作れるように工夫しました
           .sk-bottom.clearfix
           -# レシピID、公開日、更新日
           .meta_data_wrapper
