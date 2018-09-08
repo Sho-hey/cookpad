@@ -21,24 +21,55 @@
                 - else
                   = image_tag "edit-image.png", class: "edit-image"
                   %span.exaple-catch_copy このレシピのキャッチコピーを入力 (検索結果にも表示されます)
+              .recipe_author_top
+                .recipe_author_top__link
+                  - if current_user.avatar.present?
+                    = image_tag "#{current_user.avatar}", size: "22x22", class: "author_icon"
+                  - else
+                    = image_tag "icon_default.png", size: "22x22"
+                  = "#{current_user.name}のレシピ"
               -# 画像
-        -#     .recipe-photo
-        -#       = f.label :image do
-        -#         - if @recipe.image.present?
-        -#           = image_tag @recipe.image.to_s, id: "image_example", width: "280px"
-        -#         - else
-        -#           = image_tag "image-upload.png", id: "image_example", width: "280px"
-        -#         = f.file_field :image, class: 'recipe-image'
+          .recipe-photo
+            -# = f.label :image do
+            - if @recipe.image.present?
+              = image_tag @recipe.image.to_s, id: "image_example", width: "280px"
+            - else
+              = image_tag "image-upload.png", id: "image_example", width: "280px"
+            -# = f.file_field :image, class: 'recipe-image'
+          .memo_and_history.clearfix
+            .memo_wrapper
+              %h3 コツ・ポイント
+              .text-content.recipe-tips-edit
+                - if @recipe.tips.present?
+                  .recipe-tips-edit-present
+                    = @recipe.tips
+                - else
+                  = image_tag "edit-image.png", class: "edit-image"
+                  %span.example-tips クリックしてコツやポイントを入力
+            .history_wrapper
+              %h3 このレシピの生い立ち
+              .text-content.recipe-background-edit
+                - if @recipe.background.present?
+                  .recipe-background-edit-present
+                    = @recipe.background
+                - else
+                  = image_tag "edit-image.png", class: "edit-image"
+                  クリックしてこのレシピをが生まれたきっかけや経験を入力
+                  %br
+                  %span 例）母から教わったレシピを、家族が好む甘めの味付けにアレンジしました
+                  %br
+                  %span 例）〇〇番組で紹介されたレシピを、家にある材料で簡単に作れるように工夫しました
+          .sk-bottom.clearfix
+          -# レシピID、公開日、更新日
+          .meta_data_wrapper
+            .recipe_id_and_published_date
+              %span.recipe_id レシピID : 5198962
+              %span.published_date 公開日 : 未公開
+              %span 更新日 : 18/08/07
         -#     -# キャッチコピーと材料
 
         -#           = f.text_area :catch_copy
-        -#         .recipe_author_top
-        -#           .recipe_author_top__link
-        -#             - if current_user.avatar.present?
-        -#               = image_tag "#{current_user.avatar}", size: "22x22", class: "author_icon"
-        -#             - else
-        -#               = image_tag "icon_default.png", size: "22x22"
-        -#             = "#{current_user.name}のレシピ"
+
         -#       .ingredients
         -#         -# - @recipe.ingredients.each do |ingredient|
         -#         = f.fields_for :ingredients do |i|
@@ -55,30 +86,30 @@
         -#     #cooking-steps.clearfix
         -#       = render "step-edit", f: f
         -#       -# コツ、レシピの生い立ち
-        -#     .memo_and_history.clearfix
-        -#       .memo_wrapper
-        -#         %h3 コツ・ポイント
-        -#         .text-content
-        -#           -# = image_tag "edit-image.png", class: "edit-image"
-        -#           -# クリックしてコツやポイントを入力
-        -#           = f.text_area :tips, placeholder: "コツ"
-        -#       .history_wrapper
-        -#         %h3 このレシピの生い立ち
-        -#         .text-content
-        -#           -# = image_tag "edit-image.png", class: "edit-image"
-        -#           -# クリックしてこのレシピをが生まれたきっかけや経験を入力
-        -#           -# %br
-        -#           -# 例）母から教わったレシピを、家族が好む甘めの味付けにアレンジしました
-        -#           -# %br
-        -#           -# 例）〇〇番組で紹介されたレシピを、家にある材料で簡単に作れるように工夫しました
-        -#           = f.text_area :background
-        -#     .sk-bottom.clearfix
-        -#     -# レシピID、公開日、更新日
-        -#     .meta_data_wrapper
-        -#       .recipe_id_and_published_date
-        -#         %span.recipe_id レシピID : 5198962
-        -#         %span.published_date 公開日 : 未公開
-        -#         %span 更新日 : 18/08/07
+          -# .memo_and_history.clearfix
+          -#   .memo_wrapper
+          -#     %h3 コツ・ポイント
+          -#     .text-content
+          -#       -# = image_tag "edit-image.png", class: "edit-image"
+          -#       -# クリックしてコツやポイントを入力
+          -#       = f.text_area :tips, placeholder: "コツ"
+          -#   .history_wrapper
+          -#     %h3 このレシピの生い立ち
+          -#     .text-content
+          -#       -# = image_tag "edit-image.png", class: "edit-image"
+          -#       -# クリックしてこのレシピをが生まれたきっかけや経験を入力
+          -#       -# %br
+          -#       -# 例）母から教わったレシピを、家族が好む甘めの味付けにアレンジしました
+          -#       -# %br
+          -#       -# 例）〇〇番組で紹介されたレシピを、家にある材料で簡単に作れるように工夫しました
+          -#       = f.text_area :background
+          -# .sk-bottom.clearfix
+          -# -# レシピID、公開日、更新日
+          -# .meta_data_wrapper
+          -#   .recipe_id_and_published_date
+          -#     %span.recipe_id レシピID : 5198962
+          -#     %span.published_date 公開日 : 未公開
+          -#     %span 更新日 : 18/08/07
         -# .submit-actions.clearfix
         -#   = f.submit "保存する",class: "recipe_submit_button"
 
