@@ -28,6 +28,9 @@
                   - else
                     = image_tag "icon_default.png", size: "22x22"
                   = "#{current_user.name}のレシピ"
+              .ingredients
+                = link_to "", id: "ingredients-image-edit" do
+                  = image_tag "cookpad-ingredients.gif"
               -# 画像
           .recipe-photo
             -# = f.label :image do
@@ -36,6 +39,7 @@
             - else
               = image_tag "image-upload.png", id: "image_example", width: "280px"
             -# = f.file_field :image, class: 'recipe-image'
+            -# キャッチコピーと材料
           .memo_and_history.clearfix
             .memo_wrapper
               %h3 コツ・ポイント
@@ -66,9 +70,7 @@
               %span.recipe_id レシピID : 5198962
               %span.published_date 公開日 : 未公開
               %span 更新日 : 18/08/07
-        -#     -# キャッチコピーと材料
 
-        -#           = f.text_area :catch_copy
 
         -#       .ingredients
         -#         -# - @recipe.ingredients.each do |ingredient|

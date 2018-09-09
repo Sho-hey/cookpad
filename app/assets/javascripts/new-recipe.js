@@ -36,12 +36,12 @@ $(document).on('turbolinks:load', function(){
     });
 
 // 編集 追加
-    $("#ingredient-add-button-edit").on("click", function(){
-      ingredient_number = ingredient_number + 1
-      editHtml = editAppendIngredient(ingredient_number)
-      $(".ingredients").append(editHtml);
-      return false;
-    });
+    // $("#ingredient-add-button-edit").on("click", function(){
+    //   ingredient_number = ingredient_number + 1
+    //   editHtml = editAppendIngredient(ingredient_number)
+    //   $(".ingredients").append(editHtml);
+    //   return false;
+    // });
 
 
 // 新規投稿 削除
@@ -51,11 +51,11 @@ $(document).on('turbolinks:load', function(){
     });
 
 // 編集 削除
-    $(document).on("click", "#ingredient-delete-button-edit", function(){
-      $(this).nextAll("input").prop("checked", true);
-      $(this).closest(".ingredient").hide();
-      return false;
-    });
+    // $(document).on("click", "#ingredient-delete-button-edit", function(){
+    //   $(this).nextAll("input").prop("checked", true);
+    //   $(this).closest(".ingredient").hide();
+    //   return false;
+    // });
   });
 });
 

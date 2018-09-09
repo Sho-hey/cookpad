@@ -19,6 +19,8 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+    # attributes使わずに保存できればもっと簡単に処理できるよね
+    # @ingredients = @recipe.ingredients
   end
 
   def update
