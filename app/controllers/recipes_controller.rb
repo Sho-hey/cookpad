@@ -20,6 +20,7 @@ class RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
     # attributes使わずに保存できればもっと簡単に処理できるよね
+    # これをやるには新規の保存画面でも変えなくちゃならない。なぜなら、モデルに関係性が書かれている状態だから。時間ができたら新規画面の作成の時にページを作り直そう
     # @ingredients = @recipe.ingredients
   end
 
