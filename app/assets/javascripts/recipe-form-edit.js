@@ -221,4 +221,61 @@ $(function(){
     });
     return false;
   });
+
+
+
+  // レシピの材料
+  function recipeIngredientsForm(){
+    // var html = `<div class="ingredients_wrapper">
+    //               <div class="ingredients-title">
+    //                 <h3 class="ingredients_title">
+    //                   <div class="content">
+    //                     <span>材料</span>
+    //                     <span class="serving_for">（１～２人分）</span>
+    //                   </div>
+    //                 </h3>
+    //               </div>
+    //               <form class="ingredients">
+    //                 <div class="ingredient">
+    //                   <input placeholder="材料名" class="ingredient-name" type="text" name="recipe[ingredients_attributes][][name]" >
+    //                   <input placeholder="分量" class="ingredient-amount" type="text" name="recipe[ingredients_attributes][][amount]">
+    //                   <a id="ingredient-delete-button" href="">削除</a>
+    //                   <input name="recipe[ingredients_attributes][][_destroy]" type="hidden", value="">
+    //                   <input id="update_destroy" type="checkbox" value="" name="recipe[ingredients_attributes][][_destroy]">
+    //                 </div>
+    //               </form>
+    //               <div class="add-save">
+    //                 <a href="" id="ingredient-add-button-edit">追加</a>
+    //                 <button class="editor_ok_button-ingredients" type="submit">保存</button>
+    //               </div>
+    //             </div>`
+    var html = `<div class="ingredients_wrapper">
+                  <div class="ingredients-title">
+                    <h3 class="ingredients_title">
+                      <div class="content">
+                        <span>材料</span>
+                        <span class="serving_for">（１～２人分）</span>
+                      </div>
+                    </h3>
+                  </div>
+                  <form class="ingredients">
+                    <div class="ingredient">
+                      <input placeholder="材料名" class="ingredient-name" type="text" name="ingredients[][name]">
+                      <input placeholder="分量" class="ingredient-amount" type="text" name="ingredients[][name]">
+                      <a id="ingredient-delete-button" href="">削除</a>
+                    </div>
+                  </form>
+                  <div class="add-save">
+                    <a href="" id="ingredient-add-button-edit">追加</a>
+                    <button class="editor_ok_button-ingredients" type="submit">保存</button>
+                  </div>
+                </div>`
+    return html;
+  };
+  $("#ingredients-image-edit").on("click", function(){
+    $("#ingredients-image-edit").hide();
+    var html = recipeIngredientsForm();
+    $(".ingredients").append(html);
+    return false;
+  })
 });
